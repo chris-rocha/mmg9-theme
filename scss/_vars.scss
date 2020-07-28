@@ -1,0 +1,52 @@
+// GLOBAL VARIABLES - include your variables here or alter the predefined vars
+
+// Primary
+$warning: red;
+
+$borderWidth: 1px;
+$formBorderWidth: 1px;
+$formFieldWidth: 280px;
+$formBorderColor: black;
+
+// background vars
+$backgroundColor: white;
+
+// font vars
+$fontSize: 20px; // default font size. Change here will adjust sizes across the board.
+$fontFamily: Arial, sans-serif; // default fonts
+$fontColor: black; // default font color
+// $boldFamily: $fontFamily;
+$fontWeight: normal;
+$boldWeight: 700;
+
+$iconFamily: 'Material Icons';
+
+// link vars
+$linkColor: blue; // default link INERT color
+$linkHoverColor: red; // default link HOVER color
+$linkDecoration: underline; // default link decoration
+
+// heading vars
+$headingFamily: "Libre Baskerville", "Baskerville", "Baskerville Old Face", "Hoefler Text", "Georgia", Garamond, "Times New Roman", serif; // default heading font
+$semiBoldWeight: 700;
+$headingColor: $fontColor;
+
+// form vars
+$formFont: $fontFamily; // default form font
+
+$headerMaxWidth: 1440px;
+$landingMaxWidth: 1170px;
+$bodyMaxWidth: 760px;
+$mobileMargins: 7%;
+$componentMargin: $fontSize;
+
+// media query dimensions
+// $tenEightyWidth: 1900px;
+// $desktopLgWidth: 1280px;
+$desktopWidth: 960px;
+$tabletWidth: 768px;
+$mobilePortraitWidth: 300px;
+$mobileLandscapeWidth: 565px;
+$mobileMenuPoint: 920px;
+
+$fontSizeChange: 698px;

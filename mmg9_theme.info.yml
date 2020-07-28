@@ -1,0 +1,30 @@
+name: MMG9
+type: theme
+description: 'Custom theme'
+package: Custom
+version: VERSION
+core_version_requirement: ^8 || ^9
+# base theme: false
+base theme: classy
+
+libraries:
+  - mmg9_theme/global-styling
+  - mmg9_theme/global-scripts
+
+regions:
+  header: 'Items for the header region.'
+  highlighted: 'Items for the highlighted content region.'
+  help: 'Dynamic help text, mostly for admin pages.'
+  section_top: 'Content above main'
+  content: 'The main content of the current page.'
+  section_bottom: 'Content below main'
+  footer: 'Items for the footer region.'
+
+stylesheets-remove:
+  - core/themes/classy/css/components/progress.css
+  - core/themes/stable/css/system/components/progress.module.css
+  - core/themes/classy/css/components/messages.css
+  - core/themes/classy/css/components/tabs.css
+  - core/themes/classy/css/components/links.css
+  - core/themes/classy/css/components/button.css
+  - core/themes/classy/css/components/menu.css

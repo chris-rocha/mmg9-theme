@@ -1,0 +1,121 @@
+body {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto auto 1fr auto auto;
+  grid-template-areas:  "highlighted"
+                        "header"
+                        "help"
+                        "section-top"
+                        "content"
+                        "section-bottom"
+                        "footer";
+  overflow-x: hidden;
+}
+
+.landing-max-width {
+  display: grid;
+  grid-template-areas:  ". container .";
+
+  &.right-side{
+    grid-template-areas:  ". container container";
+  }
+}
+
+.header-max-width {
+  display: grid;
+  grid-template-areas:  ". container .";
+}
+
+.body-max-width {
+  display: grid;
+  grid-template-areas:  ". container .";
+}
+
+// autoprefixer works when template rows and columns are declared in the same block, thus we must repeat the rows declaration
+.landing-max-width {
+  grid-template-rows: auto;
+  grid-template-columns: minmax($mobileMargins, 1fr) minmax(0, $landingMaxWidth) minmax($mobileMargins, 1fr);
+}
+
+.body-max-width {
+  grid-template-rows: auto;
+  grid-template-columns: minmax($mobileMargins, 1fr) minmax(0, $bodyMaxWidth) minmax($mobileMargins, 1fr);
+}
+
+.header-max-width {
+  grid-template-rows: auto;
+  grid-template-columns: minmax($mobileMargins, 1fr) minmax(0, $headerMaxWidth) minmax($mobileMargins, 1fr);
+}
+
+@media(max-width: $mobileMenuPoint) {
+  .header-max-width.mobilize {
+    display: grid;
+    grid-template-areas: ". mobile-container .";
+    grid-template-columns: minmax($mobileMargins, 1fr) minmax(0, $headerMaxWidth) minmax($mobileMargins, 1fr);
+    > .container {
+      grid-area: mobile-container;
+    }
+  }
+}
+
+// generic nested container for wrappers above
+.container {
+  grid-area: container;
+}
+
+#header {
+  grid-area: header;
+}
+
+#help {
+  grid-area: help;
+}
+
+#highlighted {
+  grid-area: highlighted;
+  position: relative; // for the children
+}
+
+#section-top {
+  grid-area: section-top;
+}
+
+#content {
+  grid-area: content;
+}
+
+#section-bottom {
+  grid-area: section-bottom;
+}
+
+#footer {
+  grid-area: footer;
+}
+
+// deal with admin toolbar by adding a new template area with height to 'hold' the toolbar.
+body.adminimal-admin-toolbar.user-logged-in {
+  padding-top: 0 !important;
+  grid-template-columns: 100%;
+  grid-template-rows: 90px auto auto auto auto 1fr auto auto;
+  grid-template-areas:  "toolbar"
+                        "highlighted"
+                        "header"
+                        "help"
+                        "section-top"
+                        "content"
+                        "section-bottom"
+                        "footer";
+
+  #toolbar-administration {
+    grid-area: toolbar;
+    background-color: black;
+  }
+}
+
+// ie support
+.landing-max-width,
+.header-max-width,
+.sticky-max-width,
+.body-max-width {
+  -ms-grid-columns: 1fr 960px 1fr;
+}

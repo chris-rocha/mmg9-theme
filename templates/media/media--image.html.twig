@@ -1,0 +1,9 @@
+{%
+  set classes = [
+    'media',
+    view_mode|clean_class,
+  ]
+%}
+<figure{{ attributes.addClass(classes) }}>
+  {{ content.field_media_image }}
+</figure>

@@ -1,0 +1,39 @@
+<?php
+/**
+ * @file
+ * Functions to support theming in the custom theme.
+ */
+
+function mmg9_theme_page_attachments_alter(array &$attachments) {
+  $meta_referrer = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'referrer',
+      'content' => 'unsafe-url',
+    ],
+  ];
+  $attachments['#attached']['html_head'][] = [$meta_referrer, 'referrer'];
+
+  $viewport = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, viewport-fit=cover',
+    ],
+  ];
+  $attachments['#attached']['html_head'][] = [$viewport, 'viewport'];
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function mmg9_theme_element_info_alter(&$type) {
+  // unset the weird off canvas wrapper from system module
+  if (isset($type['page'])) {
+    if (array_key_exists('off_canvas_page_wrapper', $type['page']['#theme_wrappers'])) {
+      unset($type['page']['#theme_wrappers']['off_canvas_page_wrapper']);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+# Schema for the configuration files of the custom theme.
+
+mmg9_theme.settings:
+  type: theme_settings
+  label: 'MMG9 theme settings'

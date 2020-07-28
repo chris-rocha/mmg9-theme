@@ -1,0 +1,730 @@
+// IMPORTS
+@import "functions";
+@import "vars";
+@import "mixins";
+@import "utility";
+
+/* RESET & BASICS (Inspired by E. Meyers)
+ * ------------------------------------------------ */
+@import "reset";
+
+/* BASIC STYLES
+ * ------------------------------------------------ */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background: $backgroundColor;
+  font: {
+    size: $fontSize;
+    family: $fontFamily;
+    weight: $fontWeight;
+    style: normal;
+  }
+  line-height: 1.4;
+  color: $fontColor;
+  -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* TYPOGRAPHY
+ * ------------------------------------------------ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading1,
+.heading2,
+.heading3,
+.heading4,
+.heading5,
+.heading6 {
+  color: $fontColor;
+  font-family: $headingFamily;
+  line-height: 1.1;
+  margin-bottom: $fontSize;
+
+}
+h1,
+.heading1 {
+  text-transform: uppercase;
+  font-size: 65px;
+  font-weight: normal;
+  margin-bottom: $fontSize;
+  @media(max-width: $fontSizeChange) {
+    font-size: 34px;
+  }
+}
+h2,
+.heading2 {
+  font-size: 44px;
+  font-weight: normal;
+  margin-bottom: $fontSize;
+  text-transform: none;
+  @media(max-width: $fontSizeChange) {
+    font-size: 30px;
+  }
+}
+h3,
+.heading3 {
+  font-size: 30px;
+  font-weight:600;
+  margin-bottom: $fontSize / 2;
+  text-transform: none;
+  @media(max-width: $fontSizeChange) {
+    font-size: 26px;
+  }
+}
+h4,
+.heading4 {
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: $fontSize / 3;
+  text-transform: none;
+}
+h5,
+.heading5 {
+  font-family: $fontFamily;
+  font-weight: $boldWeight;
+  font-size: $fontSize;
+  margin-bottom: $fontSize / 3;
+  text-transform: none;
+}
+h6,
+.heading6 {
+  font-weight: $boldWeight;
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  margin-bottom: 0;
+  text-transform: none;
+  @media(max-width: $fontSizeChange) {
+    font-size: 18px;
+    &.eyebrow {
+      font-size: 16px;
+    }
+  }
+}
+p {
+  margin: 0 0 $fontSize 0;
+  @media(max-width: $fontSizeChange) {
+    font-size: 18px;
+  }
+  img {
+    margin: 0;
+  }
+  &.lead,
+  &.intro {
+    font-weight: $boldWeight;
+    font-size: 22px;
+    line-height: 1.2;
+    @media(max-width: $fontSizeChange) {
+      font-size: 20px;
+    }
+  }
+}
+em,
+i {
+  font-style: italic;
+}
+strong,
+b {
+  font-weight: $boldWeight;
+}
+u {
+  text-decoration: underline;
+}
+small,
+.legal,
+.small,
+.small-text,
+.form-item .description {
+  font-size: 12px;
+  line-height: 1.25;
+  margin-bottom: $fontSize / 2;
+  small {
+    margin-top:0.5em;
+    font-size:85%;
+  }
+}
+
+/*  Blockquotes  */
+blockquote {
+  font-family: $headingFamily;
+  font-style: italic;
+  font-size: 28px;
+  margin-bottom: $fontSize;
+  padding: $fontSize 0;
+  text-align: center;
+  @media screen and (min-width: $tabletWidth + 1) {
+    padding: 0 2em;
+  }
+  p {
+    margin: 0;
+  }
+}
+blockquote cite {
+  display: block;
+  font-size: $fontSize;
+  color: $fontColor;
+}
+hr {
+  border: {
+    style: solid;
+    color: $fontColor;
+    width: 0 0 1px;
+  }
+  clear: both;
+  margin: $fontSize auto;
+}
+
+/* LINKS
+ * ------------------------------------------------ */
+a,
+a:visited {
+  font-weight: $boldWeight;
+  color: $linkColor;
+  text-decoration: $linkDecoration;
+  &.unstyle{text-decoration: none;}
+  outline: none;
+  // border-bottom: 1px solid $linkHoverColor;
+  transition: color 250ms ease-in-out;
+}
+a:hover,
+a:focus,
+a:active {
+  color: $linkHoverColor;
+  // border-color: $linkHoverColor;
+}
+a:focus,
+a:active {
+  outline: 1px dotted $fontColor;
+}
+
+
+/* LISTS
+ * ------------------------------------------------ */
+ul,
+ol {
+  margin-bottom: 20px;
+}
+ul {
+  list-style: none outside;
+}
+ol {
+  list-style: decimal;
+  &.bold {
+    font-weight: $boldWeight;
+  }
+  li span {
+    font-weight: $fontWeight;
+  }
+}
+ol,
+ul.square,
+ul.circle,
+ul.disc {
+  margin-left: 30px;
+}
+ul.square {
+  list-style: square outside;
+}
+ul.circle {
+  list-style: circle outside;
+}
+ul.disc {
+  list-style: disc outside;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: {
+    top: 4px;
+    right: 0;
+    bottom: 5px;
+    left: 30px;
+  }
+  font-size: 90%;
+}
+ul ul li,
+ul ol li,
+ol ol li,
+ol ul li {
+  margin-bottom: 6px;
+}
+li {
+  margin-bottom: 12px;
+}
+// ul.large li { }
+// li p { }
+
+/* IMAGES
+ * ------------------------------------------------ */
+img.scale-with-grid {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* BUTTONS
+ * ------------------------------------------------ */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  appearance: none;
+  background-color: $fontColor;
+  border: $borderWidth solid $fontColor;
+  border-radius: 8px;
+  color: white;
+  display: inline-block;
+  font: {
+    size: $fontSize * 0.9;
+    weight: 700;
+    family: $fontFamily;
+  }
+  @media (max-width: $desktopWidth) {
+    font-size: $fontSize * 0.8;
+  }
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: normal;
+  padding: 6px 24px;
+
+  transition: all 250ms ease-in-out;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: $fontColor;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: scaleY(0);
+    transition: transform 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform-origin: 50% 0 0;
+  }
+
+  &:hover, &:active, &:focus {
+    color: white;
+    background-color: $fontColor;
+    border-color: $fontColor;
+    &:before {
+      transform: scaleY(1);
+    }
+  }
+  // &:active {	}
+  &:visited {
+    color: white;
+  }
+  &.full-width {
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center;
+  }
+  &.smaller {
+    font-size: $fontSize * 0.6;
+    padding: 4px 12px;
+
+    &:hover {
+      span {
+        left: -6px;
+      }
+    }
+  }
+  &.larger {
+    font-size: $fontSize + 2;
+    padding: 10px 18px;
+  }
+
+  &.arrow {
+    padding: 6px 10px;
+    &:after {
+      font-family: $iconFamily;
+      content: "\e315";
+      vertical-align: -2.5px;
+      margin-left: 2px;
+    }
+  }
+  &.transparent {
+    border-color: $fontColor;
+    color: $fontColor;
+    background-color: white;
+    &:hover, &:active, &:focus {
+      border-color: white;
+      color: white;
+    }
+  }
+  &.unstyle {
+    background: none;
+    border: none;
+    letter-spacing: 0;
+    padding: 0;
+    border-radius: 0;
+    &::before {
+      display: none;
+    }
+  }
+  &.outlined {
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    &:before {
+      background-color: rgba(white, 0.2);
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: transparent;
+      border-color: white;
+      color: white;
+    }
+  }
+}
+
+button.toolbar-icon::before {
+  transform: none !important;
+}
+
+
+
+/* Fix for odd Mozilla border & padding issues */
+button,
+input {
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+/* FORMS
+ * ------------------------------------------------ */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+select {
+  appearance: none;
+}
+
+form {
+  font-family: $formFont;
+  margin-bottom: 20px;
+}
+fieldset {
+  border: $formBorderWidth solid $formBorderColor;
+  border-radius: 0;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="number"],
+textarea,
+select {
+  box-sizing: border-box;
+  background: white;
+  border: $formBorderWidth solid $formBorderColor;
+  padding: 8px 12px;
+  outline: none;
+  border-radius: 0;
+  box-shadow: none; // 0 2px 4px rgba(black, 0.12);
+  font: {
+    // size: $fontSize + 1;
+    family: $formFont;
+  }
+  margin: 0 0 20px;
+  //max-width: $formFieldWidth;
+  width: 100%;
+  display: block;
+  &:hover,
+  &:active {
+    color: $fontColor;
+    box-shadow: none; //0 2px 4px rgba(black, 0.12);
+  }
+  &:focus {
+    border-color: $fontColor;
+    box-shadow: 0 4px 9px rgba(black, 0.1);
+  }
+  // &::placeholder {
+  //   text-transform: uppercase;
+  // }
+}
+
+
+.form-item {
+  .description {
+    margin-top: -$fontSize / 2;
+  }
+  &.form-type-webform-image-file {
+    .description {
+      margin-top: 0;
+    }
+    .form-item {
+      //nested checkboxes dont need as much spacing
+      margin: 0 0 0.25em;
+    }
+    input.button[type="submit"] {
+      margin: 0.5em 0;
+    }
+  }
+  &.form-type-textarea {
+    .description {
+      margin-top: $fontSize / 2;
+    }
+  }
+}
+
+select {
+  appearance: none;
+  padding: 7px ($fontSize * 1.8) 7px 8px;
+  border: $formBorderWidth solid $formBorderColor;
+  background: white;
+  color: $fontColor;
+  vertical-align: baseline;
+  box-sizing: inherit;
+  outline: 2px solid transparent;
+  outline-offset: 0px;
+  transition: all 100ms ease;
+  background: url('../images/angle-down.svg') no-repeat 98% 50% white;
+  background-size: 18px 18px;
+  border-radius: 0;
+  width: 100%;
+
+  &:focus {
+    color: $fontColor;
+    border-color: $fontColor;
+    outline-offset: 0px;
+  }
+
+}
+
+textarea {
+  min-height: 60px;
+}
+label,
+legend {
+  display: block;
+  font-family: $headingFamily;
+  font-weight: 600;
+  font-size: $fontSize;
+  // text-transform: uppercase;
+  p {
+    font-size: $fontSize;
+  }
+  &.option {
+    font-family: $fontFamily;
+  }
+}
+label {
+  margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+  display: inline;
+  border: $formBorderWidth solid $formBorderColor;
+}
+
+////////
+input[type=checkbox],
+input[type=radio],
+input[type=checkbox]#edit-delete,
+.checkbox {
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  top: 0;
+  margin-right: 0.25em;
+  padding: 0;
+  background: white;
+  border: 1px solid $fontColor;
+  width: $fontSize !important;
+  height: $fontSize !important;
+  transition: background 0.5s ease;
+  outline: none;
+  vertical-align: text-top;
+  border-radius: 0;
+}
+
+input[type=checkbox]#edit-delete {
+  margin-bottom: 0;
+}
+
+input[type=radio] {
+  border-radius: 50%;
+}
+
+input[type=checkbox]:hover,
+input[type=checkbox]:focus,
+input[type=radio]:hover,
+input[type=radio]:focus,
+.checkbox:hover {
+  border-color: $fontColor;
+  cursor: pointer;
+}
+
+input[type=checkbox]#edit-delete:hover,
+input[type=checkbox]#edit-delete:focus {
+  border-color: $fontColor;
+  cursor: pointer;
+}
+
+input[type=checkbox]:checked,
+input[type=checkbox]:disabled:checked,
+input[type=radio]:checked,
+input[type=radio]:disabled:checked,
+.checkbox.checked {
+  background: $fontColor;
+  border-color:$fontColor;
+  box-shadow: inset 0px 0px 0px 3px white;
+}
+
+input[type=checkbox]#edit-delete:checked,
+input[type=checkbox]#edit-delete:disabled:checked {
+  background: $fontColor;
+  box-shadow: inset 0px 0px 0px 3px white;
+}
+
+input[type=checkbox]:disabled,
+input[type=radio]:disabled {
+  opacity: .5;
+  background: $fontColor;
+}
+
+input[type=checkbox]#edit-delete:disabled {
+  opacity: .5;
+  background: tint($fontColor, 70%);
+}
+
+input[type=checkbox]:disabled:hover {
+  border-color: $fontColor;
+  cursor: default;
+}
+
+input[type=checkbox]:disabled:hover,
+input[type=radio]:disabled:hover {
+  border-color: $fontColor;
+  cursor: default;
+  /*cursor: not-allowed;*/
+}
+
+///////////
+
+
+
+input,
+textarea,
+button,
+select,
+label,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* CLEARING
+ * ------------------------------------------------ */
+.clearfix, .row {
+  zoom: 1;
+  &:before, &:after {
+    content: "\0020";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  &:after { clear: both; }
+}
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* MISC
+ * ------------------------------------------------ */
+ .add-bottom {
+  margin-bottom: $componentMargin !important;
+}
+.add-top {
+  margin-top: $componentMargin !important;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+}
+.add-top.add-bottom {
+  margin-top: $componentMargin !important;
+  margin-bottom: $componentMargin !important;
+}
+.add-bottom + .add-top {
+  margin-top: 0 !important;
+}
+.add-top:empty {
+  margin-top: 0 !important;
+}
+.add-bottom:empty {
+  margin-bottom: 0 !important;
+}
+.remove-bottom {
+  margin-bottom: 0 !important;
+}
+.remove-top {
+  margin-top: 0 !important;
+}
+.center-text {
+  text-align: center;
+}
+.all-caps {
+  text-transform: uppercase;
+}
+.title-case {
+  text-transform: capitalize;
+}
+.border-none {
+  border: none;
+  outline: none;
+}
+.mobile-only {
+  @media(min-width: $mobileMenuPoint + 1 ) {
+    display: none !important;
+  }
+}
+.desktop-only {
+  @media(max-width: $mobileMenuPoint) {
+    display: none !important;
+  }
+}

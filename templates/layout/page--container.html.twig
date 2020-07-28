@@ -1,0 +1,31 @@
+{% if page.header %}
+  {{ page.header }}
+{% endif %}
+{% if page.highlighted %}
+<section id="highlighted">
+  {{ page.highlighted }}
+</section>
+{% endif %}
+{% if page.help %}
+<section id="help" class="body-max-width">
+  <div class="container">{{ page.help }}</div>
+</section>
+{% endif %}
+{% if page.section_top %}
+<section id="section-top">
+  {{ page.section_top }}
+</section>
+{% endif %}
+<main id="content" role="main" class="body-max-width">
+  <div class="container">
+  {{ page.content }}
+  </div>
+</main>
+{% if page.section_bottom %}
+<section id="section-bottom">
+  {{ page.section_bottom }}
+</section>
+{% endif %}
+{% if page.footer %}
+  {{ page.footer }}
+{% endif %}

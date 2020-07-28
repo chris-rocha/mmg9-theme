@@ -1,0 +1,22 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      stylesheets/style.css: {}
+
+global-scripts:
+  version: VERSION
+  js:
+    # js/vue.min.js: {}
+    # js/cookieconsent.min.js: {}
+    js/site.bundle.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.ui
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+
+# youtube-scripts:
+#   js:
+#     https://www.youtube.com/iframe_api: { type: external }

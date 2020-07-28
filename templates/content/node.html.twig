@@ -1,0 +1,13 @@
+{%
+  set classes = [
+    'body-max-width'
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <div class="container">
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <h1>{{ label }}</h1>
+  {{ content }}
+  </div>
+</article>
