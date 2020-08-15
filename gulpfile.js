@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     webpack = require('webpack-stream'),
     paths = {
       sass: ['scss/**/*.scss'],
-      scripts: ['src/site.js']
+      scripts: ['src/**/*.js', 'src/**/*.vue']
     };
 
 scss.compiler = require('node-sass');
