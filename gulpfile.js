@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     scss = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     webpack = require('webpack-stream'),
@@ -9,8 +9,7 @@ var gulp = require('gulp'),
 
 scss.compiler = require('node-sass');
 
-gulp.task('styles', function() {
-  'use strict';
+function styles() {
   return gulp.src(paths.sass)
     .pipe(scss({outputStyle: 'compact'}).on('error', scss.logError))
     .pipe(autoprefixer({
@@ -23,19 +22,24 @@ gulp.task('styles', function() {
       cascade: false
     }))
     .pipe(gulp.dest('stylesheets'));
-});
+}
 
-gulp.task('scripts', function () {
-  'use strict';
+exports.styles = styles;
+
+function scripts() {
   return gulp.src(paths.scripts)
   .pipe(webpack( require('./webpack.config.js') ))
   .pipe(gulp.dest('js'));
-});
+}
 
-gulp.task('watch', function(){
-  'use strict';
-  gulp.watch(paths.sass, ['styles']);
-  gulp.watch(paths.scripts, ['scripts']);
-});
+exports.scripts = scripts;
 
-gulp.task('default', ['styles', 'scripts']);
+function watch(done) {
+  gulp.watch(paths.sass, styles);
+  gulp.watch(paths.scripts, scripts);
+  done();
+}
+
+exports.watch = gulp.series(watch);
+
+exports.default = gulp.series(exports.styles, exports.scripts);
