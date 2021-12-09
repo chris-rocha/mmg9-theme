@@ -7,8 +7,6 @@ global-styling:
 global-scripts:
   version: VERSION
   js:
-    # js/vue.min.js: {}
-    # js/cookieconsent.min.js: {}
     js/site.bundle.js: {}
   dependencies:
     - core/jquery
@@ -17,6 +15,18 @@ global-scripts:
     - core/drupal.ajax
     - core/drupalSettings
 
-# youtube-scripts:
-#   js:
-#     https://www.youtube.com/iframe_api: { type: external }
+youtube-scripts:
+  js:
+    https://www.youtube.com/iframe_api: { type: external }
+
+bi_vue:
+  js:
+    /themes/custom/mmg9_theme/js/vue.min.js: {}
+
+bi_vue_router:
+  js:
+    /themes/custom/mmg9_theme/js/vue-router.min.js: {}
+
+bi_vuex:
+  js:
+    /themes/custom/mmg9_theme/js/vuex.min.js: {}
