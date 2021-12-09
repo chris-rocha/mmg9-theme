@@ -19,14 +19,14 @@ youtube-scripts:
   js:
     https://www.youtube.com/iframe_api: { type: external }
 
-bi_vue:
+mmg9_vue:
   js:
     /themes/custom/mmg9_theme/js/vue.min.js: {}
 
-bi_vue_router:
+mmg9_vue_router:
   js:
     /themes/custom/mmg9_theme/js/vue-router.min.js: {}
 
-bi_vuex:
+mmg9_vuex:
   js:
     /themes/custom/mmg9_theme/js/vuex.min.js: {}
