@@ -1,6 +1,6 @@
 // webpack.config.js
 const path = require("path");
-const webpack = require("./node_modules/webpack");
+// const webpack = require("./node_modules/webpack");
 const VueLoaderPlugin = require("./node_modules/vue-loader/lib/plugin");
 
 module.exports = {
@@ -54,7 +54,9 @@ module.exports = {
     jquery: 'jQuery',
     Drupal: 'Drupal',
     drupalSettings: 'drupalSettings',
-    vue: 'Vue'
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter'
   },
   resolve: {
     extensions: [".js", ".vue", ".json"],
