@@ -4,7 +4,7 @@ const gulp = require('gulp'),
     webpack = require('webpack-stream'),
     paths = {
       sass: ['scss/**/*.scss'],
-      scripts: ['src/**/*.js', 'src/**/*.vue']
+      scripts: ['src/**/*.js', 'src/**/*.vue', 'src/**/*.jsx']
     };
 
 scss.compiler = require('node-sass');
@@ -15,8 +15,9 @@ function styles() {
     .pipe(autoprefixer({
       overrideBrowserslist: [
         'last 2 version',
-        'ie 6-8',
-        'Firefox > 20'
+        '> 1%',
+        'not IE > 0',
+        'not dead'
       ],
       grid: true, //'autoplace',
       cascade: false

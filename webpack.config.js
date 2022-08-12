@@ -17,12 +17,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: [/node_modules/],
         use: [
           {
             loader: "babel-loader",
-            options: { presets: ["@babel/env"] }
+            options: {
+                presets: ["@babel/env", "@babel/preset-react"],
+                plugins: ["@babel/plugin-proposal-class-properties"]
+            }
           }
         ]
       },
@@ -56,10 +59,12 @@ module.exports = {
     drupalSettings: 'drupalSettings',
     vue: 'Vue',
     vuex: 'Vuex',
-    'vue-router': 'VueRouter'
+    'vue-router': 'VueRouter',
+    react: "React",
+    'react-dom': "ReactDom"
   },
   resolve: {
-    extensions: [".js", ".vue", ".json"],
+    extensions: [".js", ".vue", ".json", ".jsx"],
     alias: {
       vue$: "vue/dist/vue.esm.js"
     }
