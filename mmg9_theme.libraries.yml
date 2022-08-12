@@ -30,3 +30,11 @@ mmg9_vue_router:
 mmg9_vuex:
   js:
     /themes/custom/mmg9_theme/js/vuex.min.js: {}
+
+mmg9_react:
+  js:
+    /themes/custom/mmg9_theme/js/react.production.min.js: {}
+
+mmg9_react_dom:
+  js:
+    /themes/custom/mmg9_theme/js/react-dom.production.min.js: {}
