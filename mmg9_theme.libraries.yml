@@ -10,7 +10,6 @@ global-scripts:
     js/site.bundle.js: {}
   dependencies:
     - core/jquery
-    - core/jquery.ui
     - core/drupal
     - core/drupal.ajax
     - core/drupalSettings
